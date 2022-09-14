@@ -1,0 +1,39 @@
+// 大頭照
+.photo-radius{
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    object-fit: cover;
+}
+
+// 文章分享圖片外框圓角
+.share-article:hover{
+    .share-article .card{
+        padding: 32px;
+    }
+    .squareRounded {
+        width: 32px;
+        height: 32px;
+        &-topLeft {
+            border-top: 2px solid #62db54;
+            border-left: 2px solid #62db54;
+            border-top-left-radius: 10px;
+        }
+        &-topRight {
+            border-top: 2px solid #62db54;
+            border-right: 2px solid #62db54;
+            border-top-right-radius: 10px;
+        }
+        &-bottomLeft {
+            border-bottom: 2px solid #62db54;
+            border-left: 2px solid #62db54;
+            border-bottom-left-radius: 10px;
+        }
+        &-bottomRight {
+            border-bottom: 2px solid #62db54;
+            border-right: 2px solid #62db54;
+            border-bottom-right-radius: 10px;
+        }
+    }  
+}
+

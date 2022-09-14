@@ -1,0 +1,33 @@
+// 課程按鈕
+.class-btn {
+    @include lg {
+        padding-top: 44px;
+    }
+    .btn {
+        // 解析度降低時按鈕內容不斷行，保持原狀
+        width: max-content;
+        &:hover {
+            border: 1px solid #62DB54;
+            color: #62DB54;
+            background: transparent;
+        }
+    }
+}
+
+// 課程清單
+.courses-block {
+    .card-body {
+        @include lg {
+            margin-right: 88px;
+        }
+    }
+    .btn {
+        // 讓按鈕文字不換行
+        white-space: nowrap;
+    }
+    .courses-btn2 {
+        background: linear-gradient(104deg, #09ACF5, #62DB54);
+        outline: none;
+        border: none;
+    }
+}

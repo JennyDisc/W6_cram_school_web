@@ -1,0 +1,432 @@
+// banner
+.banner {
+  background-image: url(../images/bg_home_mobile.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 336px;
+
+  @include md {
+    height: 680px;
+  }
+
+  @include lg {
+    background-image: url(../images/bg_home.jpg);
+    // 不要設定寬度，讓背景圖片自適應瀏覽度寬度
+    // 法1.高度=設計稿該區塊高度
+    // height: 680px;
+
+    // 法2.banner常用100vh讓區塊高度=瀏覽器高度，因為<nav>高度90px所以要扣除給<nav>用
+    height: calc(100vh - 90px);
+  }
+
+  h2 {
+    // 背景有個漸層色(即遮色片)
+    background: linear-gradient(#09acf5, #62db54);
+    /* 將背景漸層色裁切成只有文字部分 */
+    background-clip: text;
+    -webkit-background-clip: text;
+    /* 因為 Chrome 還沒有很好的支援度，所以要加上 webkit 前綴 */
+    // 文字要變成透明，才能透出遮色片下面的背景顏色
+    color: transparent;
+
+    &,
+    p,
+    h3 {
+      display: block;
+    }
+  }
+
+  .banner-text {
+    padding: 32px 0;
+
+    @include md {
+      padding: 50px 0;
+    }
+
+    // banner四個角的方塊
+    .square {
+      width: 10px;
+      height: 10px;
+      background-color: #fff;
+    }
+  }
+}
+
+// 課程優勢
+.strength {
+  @include lg {
+    h3 {
+      text-align: left;
+    }
+
+    .mark-line {
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .mx-auto {
+      margin-right: 0 !important;
+      margin-left: 0 !important;
+    }
+  }
+
+  .s-border {
+    background-color: #202020;
+
+    @include lg {
+      background-color: #2D2D2D;
+    }
+
+    &:hover {
+      @include lg {
+        // outline不會產生1px線條(沒有實體寬度)，使用border則會(有實體寬度)且滑鼠移過時整個區塊會有跳動感
+        outline: 1px solid #62DB54;
+        border-radius: 12px;
+        background-color: #202020;
+
+        span {
+          background: linear-gradient(#09acf5, #62db54);
+          background-clip: text;
+          -webkit-background-clip: text;
+          color: transparent;
+        }
+      }
+    }
+  }
+
+  span {
+    font-size: 50px;
+    background: linear-gradient(#09acf5, #62db54);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+
+    @include lg {
+      // 改 color 等於沒有遮色片
+      color: #FFFFFF;
+    }
+  }
+}
+
+.mark-line {
+  width: 50px;
+  border-bottom: 3px solid #62DB54;
+}
+
+// 課程說明
+.class-block {
+  h3 {
+    font-size: 22px;
+  }
+
+  .mark-line {
+    margin-bottom: 50px;
+
+    @include lg {
+      margin-bottom: 74px;
+    }
+  }
+
+  .class {
+    margin-bottom: 50px;
+
+    &:nth-last-child(1) {
+      margin-bottom: 0px;
+
+      @include md {
+        margin-bottom: 50px;
+      }
+    }
+
+    span {
+      // 自己try間距
+      margin-left: 28px;
+      padding: 0 8px;
+    }
+  }
+}
+
+// 程式清單跑馬單
+.course-block {
+  .mark-line {
+    margin-bottom: 26px;
+  }
+
+  .course-swiper-slide {
+    // 寬度等於內容寬度（非inline-block），在這個例題上應用有點像主動寫死每個區塊寬度
+    width: max-content !important;
+    padding: 16px;
+
+    @include md {
+      padding: 24px 32px;
+    }
+  }
+}
+
+// 教師陣容
+.teacher-block {
+  h3 {
+    font-size: 22px;
+  }
+
+  .teacher {
+    &:hover {
+      outline: 2px solid #62DB54;
+    }
+
+    &-btn {
+      background: linear-gradient(104deg, #09ACF5, #62DB54);
+      margin: 0 auto;
+    }
+  }
+}
+
+// 特色重點
+.class-point {
+  li {
+    .mark-line-class {
+      width: 50px;
+      border-bottom: 3px solid #62db54;
+
+      @include lg {
+        border-bottom: 3px solid #FFFFFF;
+      }
+
+      &:hover {
+        @include lg {
+          width: 65px;
+          border-bottom: 3px solid #62DB54;
+        }
+      }
+    }
+
+    span {
+      color: #62db54;
+
+      @include lg {
+        color: #FFFFFF;
+      }
+    }
+
+    .mx-auto {
+      @include lg {
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+      }
+    }
+
+    // 圖片高度寫在car上，img設定object-fit: cover，讓他隨解析度縮放
+    .card {
+      // 因為4張圖片高度不一樣，除非裁切成等高。否則得定高度，畫面看起來4張圖才會等高。所以寫死高度
+      height: 263px;
+
+      @include lg {
+        height: 615px;
+      }
+
+      &-img {
+        opacity: 0.1;
+        object-fit: cover;
+      }
+    }
+
+    &:hover {
+      img {
+        opacity: 0.88;
+      }
+
+      span {
+        color: #62db54;
+      }
+
+      .mark-line-class {
+        width: 65px;
+        border-bottom: 3px solid #62DB54;
+      }
+
+      p {
+        color: #FFFFFF;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+// 文章分享
+.share-block {
+  h3 {
+    font-size: 22px;
+  }
+  .card-corner {
+    display: none;
+    @include lg {
+      display: block;
+    }
+  }
+}
+
+// 心得
+.feedback {
+  background-image: url(../images/bg_share.jpg);
+  height: 733px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  @media (max-width:991px) {
+    height: auto;
+  }
+}
+
+.feedback-swiper {
+  //左邊圖片+右邊文字+下方箭頭的區塊寬高
+  max-width: 925px;
+  // width: 100%;
+  height: 429px;
+
+  @media (max-width: 991px) {
+    height: auto;
+  }
+
+  // 左邊圖片
+  .swiper-img {
+    max-width: 525px;
+    // width: 60%;
+    // height: 90%;
+    // swiper-slide上設有relative，當swiper-img設有 absolute就會去找swiper-slide。.swiper-img的父層是swiper-slide。而swiper-slide寬高=其父層.feedback-swiper的max-width: 925px與height: 429px，所以swiper-img是依swiper-slide去定位    top: 0 與 left: 10px
+    position: absolute;
+    top: 0;
+    left: 10px;
+
+    // 左圖下面的方形。是.swiper-img的偽元素
+    &::after {
+      content: '';
+      // width:100%是把內容撐滿寬跟高，這樣偽元素才會跟本體.swiper-img一樣大
+      width: 100%;
+      height: 100%;
+      border: 1px solid #7c7e77;
+      border-radius: 24px;
+      // 父層是.swiper-img會以此定位
+      position: absolute;
+      left: -10px;
+      top: 10px;
+      z-index: -1;
+
+      @media (max-width: 991px) {
+        left: -5px;
+        top: 5px;
+      }
+    }
+
+    img {
+      // 設寬高100%是避免如果圖片寬高度比父層小，就會產生空白區域。所以設定100%把圖片寬高度撐滿
+      width: 100%;
+      height: 100%;
+      // object-fix: cover 會限制圖片範圍在父層(.swiper-img)的區域中。概念很像 background-size: cover
+      object-fit: cover;
+    }
+
+    @media (max-width: 991px) {
+      position: relative;
+      width: calc(100% - 5px);
+      height: 213px;
+      left: 5px;
+      margin-bottom: 40px;
+    }
+  }
+
+  // 右邊心得文字
+  .swiper-card {
+    max-width: 416px;
+    border-radius: 24px 24px 24px 0;
+    // 父層是.swiper-slide會以此定位
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    h4,
+    p {
+      color: #494755;
+    }
+
+    &-img {
+      // 父層是.swiper-card會以此定位
+      position: absolute;
+      right: 32px;
+      bottom: 100%;
+      transform: translateY(50%);
+
+      @media (max-width: 991px) {
+        width: 80px;
+        height: 80px;
+        right: 24px;
+        top: -30px;
+        bottom: auto;
+        transform: none;
+      }
+    }
+
+    @media (max-width: 991px) {
+      position: relative;
+      width: 100%;
+      padding: 24px;
+      margin-bottom: 32px;
+    }
+  }
+
+  // 左右按鈕和 pagination
+  .swiper-button-next:after,
+  .swiper-button-prev:after {
+    content: '';
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    // position: unset如果 parent 有設定此屬性值則 inherit ，反之則 initial(初始值)。在此用意要取消 swiper 預設設定。好幾個swiper是客製化，像箭頭預設在圖片左右兩邊中間，為要同設計稿有定位在下面，可想成此處設定unset後，元素就不會吃到父層position效果
+    position: unset;
+    width: 24px;
+    height: 24px;
+    margin-top: 0;
+  }
+
+  .swiper-pagination {
+    position: unset !important;
+    width: auto;
+
+    .swiper-pagination-bullet {
+      background-color: #62DB54;
+      opacity: initial;
+
+      &-active {
+        width: 16px;
+        border-radius: 100px;
+      }
+    }
+  }
+
+  .swiper-buttons {
+    // 父層是.feedback-swiper會以此定位
+    position: absolute;
+    bottom: 0;
+    left: 30%;
+    // 位移用不用搭配position就能使用。此處表示往左位移 50%(這個元素本身多寬，移動的百分比就乘上多少的意思)
+    transform: translateX(-50%);
+    z-index: 10;
+
+    @media (max-width: 991px) {
+      position: initial;
+      transform: none;
+    }
+  }
+}
+
+// 加入我們成為導師
+.join-block {
+  background: #202020;
+  max-width: 966px;
+
+  span {
+    font-size: 100px;
+  }
+}

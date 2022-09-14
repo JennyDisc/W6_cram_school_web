@@ -1,0 +1,36 @@
+nav {
+    border-bottom: 2px solid;
+    border-image: linear-gradient(to right, #62DB54, #09ACF5) 1;
+
+    h1 {
+        background-image: url(../images/logo2.svg);
+        width: 23.88px;
+        height: 24px;
+        text-indent: 101%;
+        overflow: hidden;
+        white-space: nowrap;
+        @include md {
+            background-image: url(../images/logo.svg);
+            width: 174.42px;
+            height: 42px;
+        }
+    }
+
+    ul>li {
+        span {
+            margin-right: 6px;
+            color: #FFFFFF;
+        }
+    }
+}
+
+footer {
+    p {
+        color: #909090;
+        @include sm {
+            font-size: 12px;
+    
+        }
+    }
+
+}
