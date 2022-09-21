@@ -376,8 +376,10 @@
   }
 
   // 左右按鈕和 pagination
+  // swiper預設箭頭圖案跟後來新增的圖案，兩個是不同的生成方式，可以簡單想成兩種不同的偽元素。若要用新增圖案，就要把預設箭頭弄不見
   .swiper-button-next:after,
   .swiper-button-prev:after {
+    // 把預設的偽元素 content 變成 ""（空值）
     content: '';
   }
 
