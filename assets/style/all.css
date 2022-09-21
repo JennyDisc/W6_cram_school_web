@@ -14293,11 +14293,22 @@ h2, .h2, h3, .h3 {
   border-bottom-right-radius: 10px;
 }
 
-nav {
-  border-bottom: 2px solid;
-  -o-border-image: -o-linear-gradient(left, #62DB54, #09ACF5) 1;
-     border-image: -webkit-gradient(linear, left top, right top, from(#62DB54), to(#09ACF5)) 1;
-     border-image: linear-gradient(to right, #62DB54, #09ACF5) 1;
+nav::before {
+  content: '';
+  position: absolute;
+  top: 88px;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: -webkit-gradient(linear, left top, right top, color-stop(50%, #62DB54), color-stop(50%, #09ACF5));
+  background: -o-linear-gradient(left, #62DB54 50%, #09ACF5 50%);
+  background: linear-gradient(to right, #62DB54 50%, #09ACF5 50%);
+}
+
+@media (min-width: 992px) {
+  nav::before {
+    top: 107px;
+  }
 }
 
 nav h1, nav .h1 {
